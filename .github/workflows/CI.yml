@@ -24,7 +24,7 @@ jobs:
         run: corepack enable
         
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
 
       - name: Typecheck (all workspaces)
         run: yarn ts:check
