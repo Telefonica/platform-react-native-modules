@@ -26,6 +26,9 @@ jobs:
         with:
           token: ${{ secrets.FLOW_GITHUB_TOKEN }}
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Install dependencies
         run: yarn install --immutable --immutable-cache
 

@@ -20,6 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Enable Corepack
+        run: corepack enable
+        
       - name: Install dependencies
         run: yarn install --immutable --immutable-cache
 
