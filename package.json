@@ -5,11 +5,11 @@
     "packages/*/*"
   ],
   "scripts": {
-    "build": "npm -ws --if-present run build",
-    "ts:check": "npm -ws --if-present run ts:check"
+    "build": "yarn workspaces foreach -A run build",
+    "ts:check": "yarn workspaces foreach -A run ts:check"
   },
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "npm@10.9.3"
+  "packageManager": "yarn@4.6.0"
 }

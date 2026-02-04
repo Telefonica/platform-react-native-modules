@@ -36,6 +36,6 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
         run: |
           PKG_JSON="packages/public/${{ github.event.inputs.package }}/package.json"
-          PKG_NAME=$(node -p "require('./' + process.env.PKG_JSON).name" --PKG_JSON="$PKG_JSON")
+          PKG_NAME=$(node -p "require(process.argv[1]).name" "$PKG_JSON")
           echo "Unpublishing $PKG_NAME@${{ github.event.inputs.version }}"
           npm unpublish "$PKG_NAME@${{ github.event.inputs.version }}" --force

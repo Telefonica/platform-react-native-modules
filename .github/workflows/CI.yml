@@ -24,7 +24,7 @@ jobs:
         run: yarn install --immutable --immutable-cache
 
       - name: Typecheck (all workspaces)
-        run: npm run ts:check
+        run: yarn ts:check
 
       - name: Build (all workspaces)
-        run: npm run build
+        run: yarn build
