@@ -1,0 +1,15 @@
+{
+  "name": "platform-react-native-modules",
+  "private": true,
+  "workspaces": [
+    "packages/*/*"
+  ],
+  "scripts": {
+    "build": "npm -ws --if-present run build",
+    "ts:check": "npm -ws --if-present run ts:check"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "npm@10.9.3"
+}
