@@ -8,6 +8,10 @@
     "build": "yarn workspaces foreach -A run build",
     "ts:check": "yarn workspaces foreach -A run ts:check"
   },
+  "devDependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.0.0"
+  },
   "engines": {
     "node": ">=20"
   },
