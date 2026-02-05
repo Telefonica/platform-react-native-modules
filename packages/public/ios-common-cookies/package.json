@@ -1,6 +1,6 @@
 {
   "name": "@telefonica/ios-common-cookies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Expo iOS module for synchronizing cookies between HTTPCookieStorage and WKWebView",
   "license": "MIT",
   "repository": {
