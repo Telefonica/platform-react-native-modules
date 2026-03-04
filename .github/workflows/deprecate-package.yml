@@ -23,8 +23,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.FLOW_GITHUB_TOKEN }}
 
       - name: Enable Corepack
         run: corepack enable
