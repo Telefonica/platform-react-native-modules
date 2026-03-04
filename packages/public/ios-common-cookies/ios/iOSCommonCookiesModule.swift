@@ -45,6 +45,40 @@ public class iOSCommonCookiesModule: Module {
       }
     }
 
+    // Clear all cookies from HTTPCookieStorage and WKWebView cookie store.
+    AsyncFunction("clearAllCookies") { (promise: Promise) in
+      DispatchQueue.main.async {
+        // 1) Clear HTTPCookieStorage
+        let httpStorage = HTTPCookieStorage.shared
+        let httpCookies = httpStorage.cookies ?? []
+        let httpCount = httpCookies.count
+        for cookie in httpCookies {
+          httpStorage.deleteCookie(cookie)
+        }
+
+        // 2) Clear WKWebView cookie store
+        let cookieStore = WKWebsiteDataStore.default().httpCookieStore
+        cookieStore.getAllCookies { wkCookies in
+          let wkCount = wkCookies.count
+          let group = DispatchGroup()
+
+          for cookie in wkCookies {
+            group.enter()
+            cookieStore.delete(cookie) {
+              group.leave()
+            }
+          }
+
+          group.notify(queue: .main) {
+            promise.resolve([
+              "clearedHTTP": httpCount,
+              "clearedWebView": wkCount
+            ])
+          }
+        }
+      }
+    }
+
     // Best-effort two-way sync: HTTP -> WebView, then WebView -> HTTP.
     AsyncFunction("syncCookiesBidirectional") { (promise: Promise) in
       DispatchQueue.main.async {
